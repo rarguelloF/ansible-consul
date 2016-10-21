@@ -1,0 +1,25 @@
+{
+  "data_dir": "/var/lib/consul",
+  "log_level": "INFO",
+
+  "bind_addr": "{{ consul_bind_address }}",
+  "datacenter": "{{ consul_datacenter }}",
+  "domain": "{{ consul_domain }}",
+{% if consul_retry_join is defined %}
+  "retry_join": {{ consul_retry_join|to_json }},
+{% endif %}
+  "disable_remote_exec": true,
+  "rejoin_after_leave": true,
+  "dns_config": {
+    "allow_stale": false
+  },
+{% if 'consul' in group_names %}
+  "server": true,
+  "bootstrap_expect": {{ consul_retry_join|length }},
+  "performance": {
+    "raft_multiplier": 3
+  }
+{% else %}
+  "server": false
+{% endif %}
+}

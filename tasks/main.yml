@@ -1,0 +1,82 @@
+- name: "Create the consul group"
+  group:
+    name: consul
+  tags: ['consul']
+
+- name: "Create the consul user"
+  user:
+    name: consul
+    group: consul
+    createhome: no
+    system: yes
+  tags: ['consul']
+
+- name: "Check installed consul version"
+  shell: consul version | grep -Po '(?<=Consul v)(\d+.\d+.\d+)'
+  ignore_errors: True
+  changed_when: False
+  register: consul_installed_version
+  tags: ['consul']
+
+- name: "Download consul"
+  get_url:
+    url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip"
+    dest: "/tmp/consul_{{ consul_version }}_linux_amd64.zip"
+    sha256sum: "{{ consul_checksum }}"
+    owner: root
+    group: root
+    mode: 0644
+  register: consul_download
+  when: consul_installed_version|failed or consul_installed_version.stdout != consul_version
+  tags: ['consul']
+
+- name: "Unzip consul archive"
+  unarchive:
+    src: "{{ consul_download.dest }}"
+    dest: /usr/local/bin
+    copy: no
+    owner: root
+    group: root
+    mode: 0755
+  when: consul_installed_version|failed or consul_installed_version.stdout != consul_version
+  notify: Restart consul
+  tags: ['consul']
+
+- name: "Create consul directories"
+  file:
+    path: "{{ item }}"
+    owner: consul
+    group: consul
+    mode: 0755
+    state: directory
+  with_items:
+    - /etc/consul
+    - /var/lib/consul
+  tags: ['consul']
+
+- name: "Configure consul"
+  template:
+    dest: /etc/consul/config.json
+    src: config.json.j2
+    owner: consul
+    group: consul
+    mode: 0644
+  notify: Restart consul
+  tags: ['consul', 'files']
+
+- name: "Install the systemd unit file"
+  copy:
+    src: consul.systemd
+    dest: /etc/systemd/system/consul.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: Reload systemd
+  tags: ['consul', 'files']
+
+- name: "Ensure consul is started and enabled on boot"
+  service:
+    name: consul
+    state: started
+    enabled: yes
+  tags: ['consul']

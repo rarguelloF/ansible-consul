@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Emilien Kenler <emilien@kkvesper.jp>
+  description: Install and configure a Consul agent
+  company: KK Vesper
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+    - xenial
+dependencies: []
