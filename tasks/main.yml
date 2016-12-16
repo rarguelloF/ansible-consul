@@ -1,6 +1,7 @@
 - name: "Create the consul group"
   group:
     name: consul
+    system: yes
   tags: ['consul']
 
 - name: "Create the consul user"
