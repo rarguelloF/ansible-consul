@@ -1,4 +1,5 @@
-consul_version: 0.7.0
-consul_checksum: b350591af10d7d23514ebaa0565638539900cdb3aaa048f077217c4c46653dd8
+consul_version: 0.7.2
+consul_checksum: aa97f4e5a552d986b2a36d48fdc3a4a909463e7de5f726f3c5a89b8a1be74a58
 consul_datacenter: dc
 consul_domain: consul
+consul_ui_enabled: false
