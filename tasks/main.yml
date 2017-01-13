@@ -31,6 +31,9 @@
   when: consul_installed_version|failed or consul_installed_version.stdout != consul_version
   tags: ['consul']
 
+- name: "Make sure that unzip is installed"
+  package: name=unzip state=present
+
 - name: "Unzip consul archive"
   unarchive:
     src: "{{ consul_download.dest }}"
@@ -67,8 +70,8 @@
 
 - name: "Install the systemd unit file"
   copy:
-    src: consul.systemd
     dest: /etc/systemd/system/consul.service
+    src: consul.systemd
     owner: root
     group: root
     mode: 0644
