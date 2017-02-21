@@ -15,6 +15,7 @@ The agent can act as a client or as a server if the host is placed in a group ca
 * `consul_domain`: By default, Consul responds to DNS queries in the "consul." domain. This flag can be used to change that domain. All queries in this domain are assumed to be handled by Consul and will not be recursively resolved.
 * `consul_retry_join`: Address of another agent to join upon starting up. This can be specified multiple times to specify multiple agents to join.
 * `consul_ui_enabled`: Whether to enable the UI or not, default is false.
+* `consul_node_meta`: This object allows associating arbitrary metadata key/value pairs with the local node, which can then be used for filtering results from certain catalog endpoints.
 
 ## Bootstrapping
 
