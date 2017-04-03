@@ -1,5 +1,7 @@
-consul_version: 0.7.3
-consul_checksum: 901a3796b645c3ce3853d5160080217a10ad8d9bd8356d0b73fcd6bc078b7f82
+consul_version: 0.7.5
+consul_checksum: 40ce7175535551882ecdff21fdd276cef6eaab96be8a8260e0599fadb6f1f5b8
+consul_platform: linux_amd64
 consul_datacenter: dc
 consul_domain: consul
 consul_ui_enabled: false
+consul_template: config.json.j2

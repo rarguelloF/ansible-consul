@@ -21,8 +21,8 @@
 
 - name: "Download consul"
   get_url:
-    url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_linux_amd64.zip"
-    dest: "/tmp/consul_{{ consul_version }}_linux_amd64.zip"
+    url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_{{ consul_platform }}.zip"
+    dest: "/tmp/consul_{{ consul_version }}_{{ consul_platform }}.zip"
     sha256sum: "{{ consul_checksum }}"
     owner: root
     group: root
@@ -61,7 +61,7 @@
 - name: "Configure consul"
   template:
     dest: /etc/consul/config.json
-    src: config.json.j2
+    src: "{{ consul_template }}"
     owner: consul
     group: consul
     mode: 0644
