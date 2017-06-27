@@ -5,3 +5,6 @@ consul_datacenter: dc
 consul_domain: consul
 consul_ui_enabled: false
 consul_template: config.json.j2
+consul_install_dir: /usr/local/bin
+consul_inventory_group_name: consul
+

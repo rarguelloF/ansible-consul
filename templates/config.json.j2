@@ -33,7 +33,7 @@
 {% if consul_node_meta is defined %}
   "node_meta": {{ consul_node_meta | to_json }},
 {% endif %}
-{% if 'consul' in group_names %}
+{% if consul_inventory_group_name in group_names %}
   "server": true,
 {% if consul_retry_join is defined %}
   "bootstrap_expect": {{ consul_retry_join|length }},
