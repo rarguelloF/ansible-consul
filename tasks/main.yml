@@ -13,7 +13,7 @@
   tags: ['consul']
 
 - name: "Check installed consul version"
-  shell: consul version | grep -Po '(?<=Consul v)(\d+.\d+.\d+)'
+  shell: "{{ consul_install_dir }}/consul version | head -1 | sed '1 s/Consul v//'"
   ignore_errors: True
   changed_when: False
   register: consul_installed_version
@@ -33,11 +33,12 @@
 
 - name: "Make sure that unzip is installed"
   package: name=unzip state=present
+  tags: ['consul']
 
 - name: "Unzip consul archive"
   unarchive:
     src: "{{ consul_download.dest }}"
-    dest: /usr/local/bin
+    dest: "{{ consul_install_dir }}"
     copy: no
     owner: root
     group: root
