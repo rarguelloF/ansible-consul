@@ -33,6 +33,7 @@
 
 - name: "Make sure that unzip is installed"
   package: name=unzip state=present
+  tags: ['consul']
 
 - name: "Unzip consul archive"
   unarchive:
