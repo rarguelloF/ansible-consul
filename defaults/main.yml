@@ -1,5 +1,5 @@
-consul_version: 0.7.5
-consul_checksum: 40ce7175535551882ecdff21fdd276cef6eaab96be8a8260e0599fadb6f1f5b8
+consul_version: 1.0.0
+consul_checksum: 585782e1fb25a2096e1776e2da206866b1d9e1f10b71317e682e03125f22f479
 consul_platform: linux_amd64
 consul_datacenter: dc
 consul_domain: consul
@@ -7,4 +7,4 @@ consul_ui_enabled: false
 consul_template: config.json.j2
 consul_install_dir: /usr/local/bin
 consul_inventory_group_name: consul
-
+consul_bind_address: 0.0.0.0
