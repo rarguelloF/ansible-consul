@@ -1,4 +1,4 @@
-# Consul
+# Consul [![Build Status](https://travis-ci.org/AerisCloud/ansible-consul.svg?branch=master)](https://travis-ci.org/AerisCloud/ansible-consul)
 
 Install and configure a Consul agent.
 
