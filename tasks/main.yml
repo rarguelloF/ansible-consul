@@ -40,7 +40,7 @@
   get_url:
     url: "https://releases.hashicorp.com/consul/{{ consul_version }}/consul_{{ consul_version }}_{{ consul_platform }}.zip"
     dest: "/tmp/consul_{{ consul_version }}_{{ consul_platform }}.zip"
-    sha256sum: "sha256:{{ consul_sha256.stdout.split(' ')|first }}"
+    sha256sum: "{{ consul_sha256.stdout.split(' ')|first }}"
     owner: root
     group: root
     mode: 0644
