@@ -1,5 +1,4 @@
 consul_version: 1.0.0
-consul_checksum: 585782e1fb25a2096e1776e2da206866b1d9e1f10b71317e682e03125f22f479
 consul_platform: linux_amd64
 consul_datacenter: dc
 consul_domain: consul
