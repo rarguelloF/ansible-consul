@@ -16,12 +16,6 @@
 {% if consul_retry_join is defined %}
   "retry_join": {{ consul_retry_join|to_json }},
 {% endif %}
-{% if consul_retry_join_ec2 is defined %}
-  "retry_join_ec2": {{ consul_retry_join_ec2|to_json }},
-{% endif %}
-{% if consul_retry_join_gce is defined %}
-  "retry_join_gce": {{ consul_retry_join_gce|to_json }},
-{% endif %}
 {% if consul_retry_join_wan is defined %}
   "retry_join_wan": {{ consul_retry_join_wan|to_json }},
 {% endif %}
@@ -35,9 +29,7 @@
 {% endif %}
 {% if consul_inventory_group_name in group_names %}
   "server": true,
-{% if consul_retry_join is defined %}
-  "bootstrap_expect": {{ consul_retry_join|length }},
-{% elif consul_bootstrap_expect is defined %}
+{% if consul_bootstrap_expect is defined %}
   "bootstrap_expect": {{ consul_bootstrap_expect }},
 {% endif %}
   "performance": {

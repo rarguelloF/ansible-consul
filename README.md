@@ -13,10 +13,8 @@ The agent can act as a client or as a server if the host is placed in a group ca
 * `consul_datacenter`: The datacenter in which the agent is running.
 * `consul_domain`: By default, Consul responds to DNS queries in the "consul." domain. This flag can be used to change that domain. All queries in this domain are assumed to be handled by Consul and will not be recursively resolved.
 * `consul_retry_join`: Addresses of other agents to join upon starting up.
-* `consul_retry_join_ec2`: This is a nested object that allows the setting of EC2-related `-retry-join` options.
-* `consul_retry_join_gce`: This is a nested object that allows the setting of GCE-related `-retry-join` options.
 * `consul_retry_join_wan`: Addresses of other WAN agents to join upon starting up.
-* `consul_bootstrap_expect`: When `consul_retry_join` is not defined, this provides the number of expected servers in the datacenter.
+* `consul_bootstrap_expect`: Number of expected servers in the datacenter. When provided, Consul waits until the specified number of servers are available and then bootstraps the cluster.
 * `consul_ui_enabled`: Whether to enable the UI or not, default is false.
 * `consul_node_meta`: This object allows associating arbitrary metadata key/value pairs with the local node, which can then be used for filtering results from certain catalog endpoints.
 * `consul_inventory_group_name`: set to the group name in the inventory file of the consul servers. Default is 'consul'.
