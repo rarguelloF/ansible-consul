@@ -7,7 +7,6 @@ The agent can act as a client or as a server if the host is placed in a group ca
 ## Variables
 
 * `consul_version`: The version of Consul to install.
-* `consul_checksum`: The checksum of the tarball provided by Hashicorp.
 * `consul_bind_address`: The address that should be bound to for internal cluster communications. This is an IP address that should be reachable by all other nodes in the cluster.
 * `consul_advertise_address`: The advertise address is used to change the address that we advertise to other nodes in the cluster. By default, the -bind address is advertised.
 * `consul_client_address`: The address to which Consul will bind client interfaces, including the HTTP, DNS, and RPC servers. By default, this is "127.0.0.1", allowing only loopback connections.
